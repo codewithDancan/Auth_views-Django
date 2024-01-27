@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} CodewithDancan {% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="header">
+  <a class="logo" href="/">Code With Dancan</a>
+  <ul class="menu">
+      {% if request.user.is_authenticated %}
+      <li><a href="{% url 'logout' %}">Log-out</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Log-in</a></li>
+      {% endif %}
+  </ul>
+</div>
+<div id="content">
+  {% block content %}
+  {% endblock %}
+</div>
+</body>
+</html>
